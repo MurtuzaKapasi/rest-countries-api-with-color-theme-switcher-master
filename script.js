@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         option.addEventListener('click', function (event) {
             event.preventDefault();
             let selectedContinent = option.id;
-            console.log(selectedContinent);
+            // console.log(selectedContinent);
             filterCountriesByContinent(selectedContinent);
 
             content.style.display = 'none';
@@ -60,7 +60,7 @@ function filterCountriesByContinent(continent) {
             let region = regionElement.textContent.trim();
             region = region.replace('Region:', '');
             region = region.trim();
-            console.log('Region:', region , 'Continent:', continent);
+            // console.log('Region:', region , 'Continent:', continent);
             if (region !== continent) {
                 card.style.display = 'none';
             } 
