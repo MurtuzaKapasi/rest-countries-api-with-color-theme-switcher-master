@@ -13,26 +13,6 @@ nav.addEventListener('click', function () {
     }
 })
 
-// const btn = document.querySelector('.dropbtn');
-// const content = document.querySelector('.dropdownContent');
-// btn.addEventListener('click', function () {
-//     const content = document.querySelector('.dropdownContent');
-//     if (content.style.display == "flex") {
-//         content.style.display = "none";
-//     } else {
-//         content.style.display = "flex";
-//     }
-// })
-
-
-// window.onclick = function (event) {
-//     const content = document.querySelector('.dropdownContent');
-//     if (!event.target.matches('.dropbtn')) {
-//         content.style.display = "none";
-//     }
-    
-// }
-
 
 
 
@@ -63,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     filterOptions.forEach(option => {
         option.addEventListener('click', function (event) {
             event.preventDefault();
-            const selectedContinent = option.id;
+            let selectedContinent = option.id;
             console.log(selectedContinent);
             filterCountriesByContinent(selectedContinent);
 
@@ -143,6 +123,7 @@ function filterCountriesByContinent(continent) {
         const modal = document.querySelector('.modal');
         if (modal) {
             modal.remove();
+            selectedContinent = '';
         }
         // Show all country cards
         const cards = document.querySelectorAll('.card');
