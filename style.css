@@ -2,6 +2,11 @@
     margin:0 ;
     padding: 0;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -weblit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 :root{
     --dark_blue : hsl(209, 23%, 22%);
