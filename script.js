@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.style.color = 'red';
             setTimeout(() => {
                 document.body.removeChild(message);
+                document.body.style.textAlign = 'left';
             } , 3000);
         }
     }
