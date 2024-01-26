@@ -55,14 +55,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.querySelector('.searchbar input');
     searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
+
             const countryName = e.target.value;
             // console.log(countryName);
+            e.target.value = '';
             filterCountriesByCountryName(countryName);
-
         }
     });
-            let flag=0;
     function filterCountriesByCountryName(countryName) {
+        let flag=0;
         const cards = document.querySelectorAll('.card');
         let lowerCaseCountryName = countryName.toLowerCase();
         lowerCaseCountryName = lowerCaseCountryName.trim();
@@ -81,14 +82,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         if(flag==0){
             const message = document.createElement('h2');
+            message.className = 'message';
             message.innerHTML = 'Country not found!';
+            message.style.color = 'red';
+            message.style.fontSize = '30px';
+            message.style.textAlign = 'center';
             document.body.appendChild(message);
-            document.body.style.textAlign = 'center';
-            document.body.style.color = 'red';
             setTimeout(() => {
                 document.body.removeChild(message);
                 document.body.style.textAlign = 'left';
-            } , 3000);
+            } , 4000);
         }
     }
 
