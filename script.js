@@ -61,21 +61,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
     });
-            
+            let flag=0;
     function filterCountriesByCountryName(countryName) {
         const cards = document.querySelectorAll('.card');
-        const lowerCaseCountryName = countryName.toLowerCase();
+        let lowerCaseCountryName = countryName.toLowerCase();
+        lowerCaseCountryName = lowerCaseCountryName.trim();
         cards.forEach(card => {
             const country = card.querySelector('.cardText h2');
             const name = country.textContent.toLowerCase();
             if(lowerCaseCountryName === name)
             {
                 card.style.display = 'flex';
+                flag=1;
             }
             else{
                 card.style.display = 'none';
             }
+
         });
+        if(flag==0){
+            const message = document.createElement('h2');
+            message.innerHTML = 'Country not found!';
+            document.body.appendChild(message);
+            document.body.style.textAlign = 'center';
+            document.body.style.color = 'red';
+
+        }
     }
 
     function filterCountriesByContinent(continent) {
