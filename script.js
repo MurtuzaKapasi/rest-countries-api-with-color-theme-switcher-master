@@ -51,24 +51,51 @@ document.addEventListener("DOMContentLoaded", function () {
             filterBox.textContent = selectedContinent;
         });
     });
+    // Add event listener to the search input
+    const searchInput = document.querySelector('.searchbar input');
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const countryName = e.target.value;
+            // console.log(countryName);
+            filterCountriesByCountryName(countryName);
 
-
-function filterCountriesByContinent(continent) {
-    const cards = document.querySelectorAll('.card');
+        }
+    });
+            
+    function filterCountriesByCountryName(countryName) {
+        const cards = document.querySelectorAll('.card');
+        const lowerCaseCountryName = countryName.toLowerCase();
         cards.forEach(card => {
-            const regionElement = card.querySelector('.cardText p:nth-child(3)');
-            let region = regionElement.textContent.trim();
-            region = region.replace('Region:', '');
-            region = region.trim();
-            // console.log('Region:', region , 'Continent:', continent);
-            if (region !== continent) {
-                card.style.display = 'none';
-            } 
-            else {
+            const country = card.querySelector('.cardText h2');
+            const name = country.textContent.toLowerCase();
+            if(lowerCaseCountryName === name)
+            {
                 card.style.display = 'flex';
             }
+            else{
+                card.style.display = 'none';
+            }
         });
-}
+    }
+
+    function filterCountriesByContinent(continent) {
+        const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const regionElement = card.querySelector('.cardText p:nth-child(3)');
+                let region = regionElement.textContent.trim();
+                region = region.replace('Region:', '');
+                region = region.trim();
+                if(continent === 'All'){
+                    card.style.display = 'flex';
+                }
+                else if (region !== continent) {
+                    card.style.display = 'none';
+                } 
+                else {
+                    card.style.display = 'flex';
+                }
+            });
+    }
 
     function showCountryDetails(country) {
         // Hide all country cards
